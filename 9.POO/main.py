@@ -1,29 +1,47 @@
 from tamagotchiEjer1 import *
-from libro import *
-from biblioteca import *
 
 # ------------Ejercicio Tamagotchi------------
 
-primer_tamagotchi = tamagotchi("Guille"); 
-primer_tamagotchi.mostrar_estado(); 
-print("\n");
-primer_tamagotchi.alimentar(); 
-print("\n");
-primer_tamagotchi.jugar(); 
-print("\n");
-primer_tamagotchi.dormir(); 
-print("\n");
-primer_tamagotchi.alimentar(); 
-print("\n");
-print("\n");
+primer_tamagotchi = Tamagotchi(input(f"Ingrese el nombre de su tamagotchi: "));  
 
-# ------------Ejercicio Biblioteca------------
+def menu (): 
+    menu_tamagotchi = """
+--------Menú principal--------
+1 - Alimentar.
+2 - Juagr.
+3 - Dormir.
+4 - Mostrar estado actual.
+5 - Salir.
+"""
+    print(menu_tamagotchi); 
+    
+opcion = 0; 
+bandera = threading.Event(); 
+hilo = threading.Thread(target=primer_tamagotchi.tiempoOcio,args=(bandera, )); 
+hilo.start(); 
 
-libro1 = libro("Harry Potter y la piedra filosofal", "J.K. Rowling", 1997, 3); 
-
-libro2 = libro("Los siete maridos de Evelyn Hugo", " Taylor Jenkins Reid", 2017, 8); 
-
-biblioteca = biblioteca(); 
-
+while opcion != 5: 
+    menu (); 
+    
+    try:
+        opcion = int(input("Ingrese una opción: "))
+    except ValueError:
+        print("Por favor, ingrese un número entero.")
+        continue
+    
+    if  opcion == 1: 
+        primer_tamagotchi.alimentar();  
+    elif opcion == 2: 
+        primer_tamagotchi.jugar();  
+    elif opcion == 3: 
+        primer_tamagotchi.dormir();  
+    elif opcion == 4: 
+        primer_tamagotchi.mostrar_estado();  
+    elif opcion == 5:
+        bandera.set(); 
+        hilo.join(); 
+        print("Saliendo del programa."); 
+    else:
+        print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
 
 
