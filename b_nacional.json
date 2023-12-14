@@ -1,0 +1,26 @@
+{
+    "nombre": "Biblioteca Nacional",
+    "libros": [
+      {
+        "titulo": "Harry Potter y la piedra filosofal",
+        "autor": "J. K. Rowling",
+        "ano_publicacion": "1997",
+        "unidades": 3,
+        "disponible": true
+      },
+      {
+        "titulo": "Los Juegos del hambre",
+        "autor": "Suzanne Collins",
+        "ano_publicacion": "2008",
+        "unidades": 5,
+        "disponible": true
+      },
+      {
+        "titulo": "En llamas",
+        "autor": "Suzanne Collins",
+        "ano_publicacion": "2009",
+        "unidades": 7,
+        "disponible": true
+      }
+    ]
+  }
